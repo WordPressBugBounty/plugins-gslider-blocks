@@ -38,7 +38,7 @@ if ( ! class_exists( 'FontLoader' ) ) {
          *
          * @var string
          */
-        private const FONT_WEIGHTS = '100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
+        const FONT_WEIGHTS = '100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
 
         /**
          * Base URL for the Google Fonts CSS API.
@@ -47,7 +47,7 @@ if ( ! class_exists( 'FontLoader' ) ) {
          *
          * @var string
          */
-        private const GOOGLE_FONTS_URL = '//fonts.googleapis.com/css';
+        const GOOGLE_FONTS_URL = '//fonts.googleapis.com/css';
 
         /**
          * Collection of Google Font families to load.
@@ -164,7 +164,7 @@ if ( ! class_exists( 'FontLoader' ) ) {
                 'gslider-blocks-fonts',
                 esc_url( $font_url ),
                 [],
-                defined( 'GSLIDER_VERSION' ) ? GSLIDER_VERSION : '1.1.5',
+                defined( 'GSLIDER_VERSION' ) ? GSLIDER_VERSION : '1.1.5'
             );
 
             wp_enqueue_style( 'gslider-blocks-fonts' );
@@ -187,7 +187,10 @@ if ( ! class_exists( 'FontLoader' ) ) {
                     $this->load_google_font( $fonts );
                 }
             } catch ( \Exception $e ) {
-                error_log( 'Font loading error: ' . $e->getMessage() );
+                if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                    // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+                    error_log( 'GSlider Blocks: Font loading error: ' . $e->getMessage() );
+                }
             } finally {
                 self::$gfonts = [];
             }
