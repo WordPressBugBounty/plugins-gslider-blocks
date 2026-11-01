@@ -1,18 +1,19 @@
 === GSlider Blocks ===
 Contributors: noruzzaman
 Tags: slider, carousel, logo carousel, slideshow, gutenberg
-Requires at least: 5.0
+Requires at least: 6.3
 Tested up to: 7.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://github.com/noruzzamans/gslider-blocks
 
-Logo Carousel, Image Slider & Testimonial blocks for Gutenberg. 7+ effects, responsive design & full customization!
+Logo Carousel, Image Slider & Testimonial blocks for Gutenberg. 5 transition effects, responsive design & full customization!
 
 == Description ==
 
-The **gslider Blocks** plugin allows you to easily add customizable and responsive sliders to your WordPress website. Perfect for both beginners and developers, this plugin provides powerful slider blocks for the WordPress block editor (Gutenberg). Customize slider content, transitions, navigation, and more, while enjoying full control over slider styling and functionality.
+The **GSlider Blocks** plugin allows you to easily add customizable and responsive sliders to your WordPress website. Perfect for both beginners and developers, this plugin provides powerful slider blocks for the WordPress block editor (Gutenberg). Customize slider content, transitions, navigation, and more, while enjoying full control over slider styling and functionality.
 
 == Available Blocks ==
 
@@ -20,7 +21,7 @@ The **gslider Blocks** plugin allows you to easily add customizable and responsi
 Create stunning hero sliders with predefined content elements. Perfect for homepage banners, promotional sliders, and featured content showcases.
 
 * Pre-built slide structure with Title, Subtitle, Description, and Button
-* Multiple transition effects (Slide, Fade, Cube, Coverflow, Flip, Cards, Creative)
+* Transition effects: Slide, Fade, Coverflow, Flip, and Creative in slider mode; Slide and Coverflow in carousel mode
 * Full background image/color support with overlay options
 * Responsive navigation arrows and pagination controls
 * Content alignment and positioning controls
@@ -31,7 +32,7 @@ Build completely custom slides using any Gutenberg blocks. Ultimate flexibility 
 
 * Use ANY WordPress blocks inside slides (images, text, buttons, galleries, etc.)
 * Full creative control with InnerBlocks support
-* Multiple slide effects including Fade, Slide, Cube, and more
+* Slide effects: Slide, Fade, Coverflow, Flip, and Creative in slider mode; Slide and Coverflow in carousel mode
 * Responsive height options (Fixed, Auto, Minimum height)
 * Loop, autoplay, and touch/swipe support
 * Keyboard and mousewheel navigation
@@ -54,7 +55,7 @@ A versatile carousel for displaying images, brand assets, or partner logos with 
 * Clickable Images: Link each image to custom internal or external URLs
 * Caption Support: Display and style image captions for better context
 * Responsive Design: Fully customizable columns and spacing for Desktop, Tablet, and Mobile
-* Advanced Transitions: Slide, Fade, Cube, and other 3D effects powered by Swiper.js
+* Transitions: Slide and Coverflow effects powered by Swiper.js
 
 **5. Testimonial Block**
 Showcase customer testimonials, reviews, and feedback in a beautiful, interactive slider or carousel layout with star ratings.
@@ -66,11 +67,11 @@ Showcase customer testimonials, reviews, and feedback in a beautiful, interactiv
 * RichText Editing: Edit title, testimonial text, author name, and designation directly in the editor
 * Per-slide Background: Individual background color, gradient, and image with overlay and opacity controls
 * Responsive Design: Fully customizable columns and spacing for Desktop, Tablet, and Mobile
-* Advanced Transitions: Slide, Fade, Cube, and other 3D effects powered by Swiper.js
+* Transitions: Slide, Fade, Coverflow, Flip, and Creative in slider mode; Slide and Coverflow in carousel mode
 
 == Key Features ==
 
-* **Multiple Transition Effects:** Slide, Fade, Cube, Coverflow, Flip, Cards, and Creative effects
+* **Multiple Transition Effects:** Slide, Fade, Coverflow, Flip, and Creative (Base Slider, Flexi Content, and Testimonial in slider mode); Slide and Coverflow in carousel mode and for Image Slider and Logo Carousel
 * **Fully Responsive:** Separate settings for Desktop, Tablet, and Mobile
 * **Navigation Controls:** Customizable arrows (icons or images) and pagination (bullets, fraction, progressbar)
 * **Performance Optimized:** Built with Swiper.js for smooth, hardware-accelerated animations
@@ -84,11 +85,11 @@ If you have any questions, please email us at **[gsliderblocks@gmail.com](mailto
 
 == Installation ==
 
-There are no prerequisites for installing **gslider Blocks**. You can follow the steps below to complete the installation.
+There are no prerequisites for installing **GSlider Blocks**. You can follow the steps below to complete the installation.
 
 = Automatic Installation =
 1.  Go to `Plugins > Add New` screen from your WordPress website dashboard.
-2.  Search for `gslider Blocks`.
+2.  Search for `GSlider Blocks`.
 3.  Install and activate the plugin, that's it!
 
 == Frequently Asked Questions ==
@@ -101,25 +102,50 @@ Yes, it's completely free.
 
 Yes, each slide can be customized independently with different content, backgrounds, and styling options.
 
-= Does gslider work with any WordPress theme? =
+= Does GSlider Blocks work with any WordPress theme? =
 
-Yes, gslider Blocks is designed to work with any WordPress theme that supports the block editor.
+Yes, GSlider Blocks is designed to work with any WordPress theme that supports the block editor.
 
 = What is the difference between Base Slider and Flexi Content? =
 
 Base Slider has pre-built content elements (title, subtitle, description, button) for quick setup. Flexi Content allows you to use any Gutenberg blocks inside slides for complete creative freedom.
 
-= Why do my slides show overlapping content with Creative, Cube, Cards, or Flip effects? =
+= Why do my slides show overlapping content with Creative, Coverflow, or Flip effects? =
 
 These are 3D transition effects where slides are stacked in layers. If your slides have transparent backgrounds, content from slides behind will show through. To fix this, add a background color or background image to each slide in your slider settings.
 
+= Where can I explore the design system and UI components? =
+
+You can inspect all 23 isolated Gutenberg block controls, responsive breakpoints, and design tokens in our interactive Storybook explorer:
+https://noruzzamans.github.io/gslider-blocks/
+
 == Source Code & Build Instructions ==
 
-The uncompiled human-readable source code for all Gutenberg blocks, React components, and scripts is bundled directly within this plugin in the `src/` directory.
+The uncompiled, human-readable source code (blocks, React components, scripts, build config) is publicly available at https://github.com/noruzzamans/gslider-blocks. The `build/` directory in this plugin is generated from that source.
 
 To build and compile the production assets from source:
+0. Clone the repository: `git clone https://github.com/noruzzamans/gslider-blocks`
 1. Install dependencies: `npm install` and `composer install`
 2. Compile production assets: `npm run build`
+
+== Contributing & Community ==
+
+GSlider Blocks is 100% open-source software! We warmly welcome community contributions, bug reports, and feedback:
+
+* GitHub Repository: https://github.com/noruzzamans/gslider-blocks
+* Contribution Guide: https://github.com/noruzzamans/gslider-blocks/blob/main/CONTRIBUTING.md
+* Browse Good First Issues: https://github.com/noruzzamans/gslider-blocks/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+* Interactive Component Storybook: https://noruzzamans.github.io/gslider-blocks/
+
+== AI Assistant & Developer Tooling ==
+
+GSlider Blocks provides an official, zero-cloud-cost Model Context Protocol (MCP) server for modern AI coding assistants (Claude Desktop, Cursor IDE, Antigravity, VS Code / Cline).
+
+Developers and designers can inspect block schemas, generate validated slider markup, and load starter design templates locally:
+
+* Official NPM Package: https://www.npmjs.com/package/@gslider/mcp-server
+* Instant NPX Runner: `npx -y @gslider/mcp-server`
+* MCP Developer Documentation: https://github.com/noruzzamans/gslider-blocks/tree/main/packages/mcp-server
 
 == Third-Party Libraries ==
 
@@ -128,16 +154,15 @@ This plugin bundles and uses the following open-source third-party libraries:
   - Source: https://swiperjs.com/
   - Repository: https://github.com/nolimits4web/swiper
   - License: MIT License (https://github.com/nolimits4web/swiper/blob/master/LICENSE)
-* **fslightbox** (v3.x)
-  - Source: https://fslightbox.com/
-  - License: Free / Commercial
+* **fslightbox** (v3.7.4, free/basic version)
+  - Source: https://fslightbox.com/ (npm: https://www.npmjs.com/package/fslightbox)
+  - License: MIT License (https://github.com/banthagroup/fslightbox/blob/master/LICENSE)
+* **Font Awesome Free SVG Icons** (v6.x)
+  - Source: https://fontawesome.com/
+  - License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
 * **Appsero Client** (v2.0.7)
   - Source: https://github.com/Appsero/client
   - License: MIT License (https://github.com/Appsero/client/blob/develop/composer.json)
-* **Font Awesome Free SVG Icons**
-  - Source: https://fontawesome.com/
-  - Repository: https://github.com/FortAwesome/Font-Awesome
-  - License: CC BY 4.0 / SIL OFL 1.1 / MIT (https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt)
 
 == External Services ==
 
@@ -162,7 +187,28 @@ This plugin may connect to or load resources from external third-party services 
 
 == Changelog ==
 
-= 1.2.0 – October 17, 2026 =
+= 1.2.1 – November 1, 2026 =
+* Performance: Optimized Largest Contentful Paint (LCP) with high-priority slide image preloading and deferred non-critical script execution.
+* Performance: Accelerated slider transitions with GPU-enforced CSS hardware acceleration and pre-initialized slide flex rows to eliminate Cumulative Layout Shift (CLS).
+* Security: Implemented strict Content Security Policy (CSP) nonce filters for inline styles and scripts, hardening compliance with enterprise security headers.
+* Accessibility: Restored visible keyboard focus rings on navigation arrows per WCAG 2.4.7 guidelines.
+* Accessibility: Added support for prefers-reduced-motion media queries and enabled keyboard focus tooltips on :focus-within.
+* Accessibility: Enhanced screen reader ARIA labels across pagination containers and sortable slider controls.
+* Swiper Engine: Fixed active slide desynchronization in infinite loop mode by switching from activeIndex to realIndex for duplicate slides.
+* Block Fixes: Corrected rating star gap units and desktop fallback handling in Testimonial Slider.
+* Block Fixes: Resolved tablet background hover styling in Logo Carousel and localized button placeholders in Base Slider.
+* Block Fixes: Restored core Additional CSS classes (customClassName) support on frontend wrapper in Image Slider and all blocks.
+* Admin & Architecture: Cleaned up obsolete dashboard endpoints and hardened REST API routing.
+* MCP AI Ecosystem: Officially published @gslider/mcp-server on NPM with zero-install npx support, model context protocol tools, and GitHub Actions trusted publishing.
+* Maintenance: Cleaned up unused imports, dead variables, and refined code documentation across block components.
+* Props: Heartfelt thanks to all community contributors and WordPress.org forum reporters who helped shape this release: @huzaifaalmesbah, @hmbashar, @Nethsara14, @Pushkar-Shahi, @rejaulalomkhan, @Zhiyilang, @blank-0007, @p00jitha, @Aaqibhafeezkhan, @Sinkleberg, @dbdefault, @ect2000, @irfat-ifti, @madhavidayma21, @mahender9390, @tu-lasizzzz, @devmuhib, @ateliercommodore, @jrevillini.
+
+= 1.2.0 – October 19, 2026 =
+* Storybook Design System: Integrated 23 isolated Gutenberg UI controls with live interactive explorer (https://noruzzamans.github.io/gslider-blocks/).
+* Accessibility: Integrated @storybook/addon-a11y with automated WCAG 2.1 AA accessibility auditing across all inspector controls.
+* Architecture: Native Gutenberg block patterns, PSR-4 singleton architecture, and decoupled headless REST API serialization (/wp-json/gslider/v1/blocks/<id>).
+* Admin Dashboard: Streamlined modern admin dashboard with live metrics, quickstart guide, and block toggles.
+* MCP AI Integration: Built-in local Model Context Protocol server for AI coding assistants.
 * Security: Eliminated dynamic CSS file generation in wp-content/uploads/ in favor of safe, block-scoped inline styles rendered via wp_add_inline_style().
 * Security: Implemented strict CSS sanitization and selector scoping to prevent arbitrary CSS injection, rejecting disallowed selectors and dangerous CSS rules.
 * Security: Fully cleaned up legacy custom CSS attributes and removed unused code editor dependencies across all blocks.
@@ -199,7 +245,7 @@ This plugin may connect to or load resources from external third-party services 
 - RichText Editing: Edit title, testimonial text, author name, and designation directly in the editor
 - Per-slide Background: Individual background color, gradient, and image with overlay and opacity controls
 - Responsive Design: Fully customizable columns and spacing for Desktop, Tablet, and Mobile
-- Advanced Transitions: Slide, Fade, Cube, and other 3D effects powered by Swiper.js
+- Transitions: Slide, Fade, Coverflow, Flip, and Creative in slider mode; Slide and Coverflow in carousel mode
 
 = 1.1.6 – February 9, 2026 = 
 **New Block: Image Slider**
@@ -209,7 +255,7 @@ This plugin may connect to or load resources from external third-party services 
 - Clickable Images: Link each image to custom internal or external URLs
 - Caption Support: Display and style image captions for better context
 - Responsive Design: Fully customizable columns and spacing for Desktop, Tablet, and Mobile
-- Advanced Transitions: Slide, Fade, Cube, and other 3D effects powered by Swiper.js
+- Transitions: Slide and Coverflow effects powered by Swiper.js
 
 = 1.1.5 – December 30, 2025 = 
 **Fixed: Fade effect initial load glitch**
@@ -246,7 +292,7 @@ This plugin may connect to or load resources from external third-party services 
 - **Fixed**: Minor CSS issues
 
 = 1.1.0 – October 11, 2025 =
-- **Fixed**: Fixed-height mode now uses the tallest (max-content) slide to set a uniform slider and background-image height across all Flexi Content items, resolving the navigation “bottom jump.
+- **Fixed**: Fixed-height mode now uses the tallest (max-content) slide to set a uniform slider and background-image height across all Flexi Content items, resolving the navigation “bottom jump”.
 
 = 1.0.10 – October 02, 2025 =
 - **Added**: Accessibility improvements — navigation arrows.
@@ -254,7 +300,7 @@ This plugin may connect to or load resources from external third-party services 
 - **Fixed**: Auto-height alignment issue causing content/navigation jump.
 
 = 1.0.9 – September 29, 2025 =
-- **Added**: Mimmum height option for all blocks  
+- **Added**: Minimum height option for all blocks  
 - **Fixed**: Minor CSS issues  
 
 = 1.0.8 – September 20, 2025 =

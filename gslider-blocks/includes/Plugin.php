@@ -11,21 +11,26 @@
 
 namespace GSlider;
 
+use GSlider\Interfaces\Registrable;
 use GSlider\Traits\SingletonTrait;
 use GSlider\Classes\StyleGenerator;
 use GSlider\Assets\FrontendAssets;
 use GSlider\Assets\AdminAssets;
 use GSlider\Classes\RegistrationBlocks;
 use GSlider\Classes\RegistrationCategory;
+use GSlider\Classes\RegistrationPatterns;
 use GSlider\Classes\FontLoader;
 use GSlider\Classes\SupportSVG;
 use GSlider\Utils\Utils;
+use GSlider\RestApi\BlocksController;
+use GSlider\Admin\Dashboard;
+use GSlider\Admin\DashboardController;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Plugin' ) ) {
+if ( ! class_exists( Plugin::class, false ) ) {
 
 	/**
 	 * Main plugin class for GSlider Blocks.
@@ -40,6 +45,27 @@ if ( ! class_exists( 'Plugin' ) ) {
 		use SingletonTrait;
 
 		/**
+		 * Core service classes implementing Registrable.
+		 *
+		 * @since 1.1.9
+		 *
+		 * @var array<class-string<Registrable>>
+		 */
+		private $services = [
+			StyleGenerator::class,
+			FrontendAssets::class,
+			AdminAssets::class,
+			RegistrationBlocks::class,
+			RegistrationCategory::class,
+			RegistrationPatterns::class,
+			FontLoader::class,
+			Utils::class,
+			BlocksController::class,
+			Dashboard::class,
+			DashboardController::class,
+		];
+
+		/**
 		 * Sets up core plugin hooks.
 		 *
 		 * Registers the plugins_loaded action for component initialization.
@@ -48,7 +74,7 @@ if ( ! class_exists( 'Plugin' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		public function __construct() {
+		private function __construct() {
 			add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
 		}
 
@@ -64,13 +90,9 @@ if ( ! class_exists( 'Plugin' ) ) {
 		 * @return void
 		 */
 		public function plugins_loaded() {
-			StyleGenerator::getInstance()->register();
-			FrontendAssets::getInstance()->register();
-			AdminAssets::getInstance()->register();
-			RegistrationBlocks::getInstance()->register();
-			RegistrationCategory::getInstance()->register();
-			FontLoader::getInstance()->register();
-			Utils::getInstance()->register();
+			foreach ( $this->services as $service_class ) {
+				$service_class::getInstance()->register();
+			}
 
 			// SVG Support (admin only).
 			if ( is_admin() ) {

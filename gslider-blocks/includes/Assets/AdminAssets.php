@@ -11,6 +11,7 @@
 
 namespace GSlider\Assets;
 
+use GSlider\Interfaces\Registrable;
 use GSlider\Traits\SingletonTrait;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class AdminAssets {
+class AdminAssets implements Registrable {
     use SingletonTrait;
 
     /**
@@ -35,7 +36,7 @@ class AdminAssets {
      *
      * @return void
      */
-    public function register() {
+    public function register(): void {
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
         add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
     }
@@ -52,13 +53,13 @@ class AdminAssets {
      */
     public function enqueue_assets() {
         wp_register_style(
-            'gslider-admin-style',
-            GSLIDER_PLUGIN_URL . 'assets/admin/css/admin.css',
+            'gslider-block-controls',
+            GSLIDER_PLUGIN_URL . 'assets/admin/css/block-controls.css',
             [],
             GSLIDER_VERSION
         );
 
-        wp_enqueue_style( 'gslider-admin-style' );
+        wp_enqueue_style( 'gslider-block-controls' );
     }
 
     /**

@@ -11,13 +11,14 @@
 
 namespace GSlider\Classes;
 
+use GSlider\Interfaces\Registrable;
 use GSlider\Traits\SingletonTrait;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! class_exists( 'SupportSVG' ) ) {
+if ( ! class_exists( SupportSVG::class, false ) ) {
 
     /**
      * Handles SVG file upload support and security.
@@ -28,7 +29,7 @@ if ( ! class_exists( 'SupportSVG' ) ) {
      *
      * @since 1.0.0
      */
-    class SupportSVG {
+    class SupportSVG implements Registrable {
 
         use SingletonTrait;
 
@@ -50,7 +51,7 @@ if ( ! class_exists( 'SupportSVG' ) ) {
          *
          * @return void
          */
-        public function register() {
+        public function register(): void {
             add_filter( 'upload_mimes', [ $this, 'allowSvgMimeType' ] );
             add_filter( 'wp_handle_upload_prefilter', [ $this, 'validateSvgUpload' ] );
             add_filter( 'wp_prepare_attachment_for_js', [ $this, 'fixSvgThumbnail' ] );
@@ -82,7 +83,9 @@ if ( ! class_exists( 'SupportSVG' ) ) {
         /**
          * Validates and sanitizes an uploaded SVG file.
          *
-         * Checks file extension, reads content, validates XML
+         * Runs for every .svg/.svgz file name regardless of the
+         * client-sent MIME type, and rejects image/svg+xml sent with
+         * any other extension. Reads content, validates XML
          * structure, checks for prohibited elements/attributes,
          * and sanitizes the SVG before saving.
          *
@@ -93,13 +96,17 @@ if ( ! class_exists( 'SupportSVG' ) ) {
          * @return array The file data array, possibly with 'error' set.
          */
         public function validateSvgUpload( array $file ): array {
-            if ( 'image/svg+xml' !== $file['type'] ) {
+            $name            = isset( $file['name'] ) ? (string) $file['name'] : '';
+            $clientType      = isset( $file['type'] ) ? (string) $file['type'] : '';
+            $extension       = strtolower( pathinfo( $name, PATHINFO_EXTENSION ) );
+            $hasSvgExtension = in_array( $extension, [ 'svg', 'svgz' ], true );
+
+            // The client type is untrusted; filterFiletypeAndExt() saves any .svg/.svgz as SVG.
+            if ( ! $hasSvgExtension && 'image/svg+xml' !== $clientType ) {
                 return $file;
             }
 
-            // Validate file extension.
-            $extension = pathinfo( $file['name'], PATHINFO_EXTENSION );
-            if ( ! in_array( $extension, [ 'svg', 'svgz' ], true ) ) {
+            if ( ! $hasSvgExtension ) {
                 $file['error'] = __( 'Invalid SVG file extension.', 'gslider-blocks' );
                 return $file;
             }
@@ -182,14 +189,33 @@ if ( ! class_exists( 'SupportSVG' ) ) {
          * @return void
          */
         public function enableSvgSupport() {
-            add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
-                $filetype = wp_check_filetype( $filename, $mimes );
-                return [
-                    'ext'             => $filetype['ext'],
-                    'type'            => $filetype['type'],
-                    'proper_filename' => $data['proper_filename'],
-                ];
-            }, 10, 4 );
+            add_filter( 'wp_check_filetype_and_ext', [ $this, 'filterFiletypeAndExt' ], 10, 4 );
+        }
+
+        /**
+         * Keeps WordPress's content sniff for every file except SVG and SVGZ.
+         *
+         * @since 1.0.0
+         *
+         * @param array         $data     File type data from WordPress.
+         * @param string        $file     Full path to the file.
+         * @param string        $filename Sanitized filename.
+         * @param string[]|null $mimes    Allowed MIME types.
+         * @return array File type data.
+         */
+        public function filterFiletypeAndExt( $data, $file, $filename, $mimes ) {
+            unset( $file );
+            $extension = strtolower( pathinfo( (string) $filename, PATHINFO_EXTENSION ) );
+            if ( ! in_array( $extension, [ 'svg', 'svgz' ], true ) ) {
+                return $data;
+            }
+
+            $filetype = wp_check_filetype( $filename, $mimes );
+            return [
+                'ext'             => $filetype['ext'],
+                'type'            => $filetype['type'],
+                'proper_filename' => $data['proper_filename'],
+            ];
         }
 
         /**
@@ -216,6 +242,10 @@ if ( ! class_exists( 'SupportSVG' ) ) {
                 'head',
                 'use',
                 'image',
+                'set',
+                'animate',
+                'animatetransform',
+                'animatemotion',
             ];
 
             // Loop through all elements and check their tag names.

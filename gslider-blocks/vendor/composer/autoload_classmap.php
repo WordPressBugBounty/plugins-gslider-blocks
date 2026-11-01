@@ -6,5 +6,25 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Appsero\\Client' => $vendorDir . '/appsero/client/src/Client.php',
+    'Appsero\\Insights' => $vendorDir . '/appsero/client/src/Insights.php',
+    'Appsero\\License' => $vendorDir . '/appsero/client/src/License.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'GSlider\\Admin\\Dashboard' => $baseDir . '/includes/Admin/Dashboard.php',
+    'GSlider\\Admin\\DashboardController' => $baseDir . '/includes/Admin/DashboardController.php',
+    'GSlider\\Assets\\AdminAssets' => $baseDir . '/includes/Assets/AdminAssets.php',
+    'GSlider\\Assets\\FrontendAssets' => $baseDir . '/includes/Assets/FrontendAssets.php',
+    'GSlider\\Classes\\FontLoader' => $baseDir . '/includes/Classes/FontLoader.php',
+    'GSlider\\Classes\\RegistrationBlocks' => $baseDir . '/includes/Classes/RegistrationBlocks.php',
+    'GSlider\\Classes\\RegistrationCategory' => $baseDir . '/includes/Classes/RegistrationCategory.php',
+    'GSlider\\Classes\\RegistrationPatterns' => $baseDir . '/includes/Classes/RegistrationPatterns.php',
+    'GSlider\\Classes\\StyleGenerator' => $baseDir . '/includes/Classes/StyleGenerator.php',
+    'GSlider\\Classes\\SupportSVG' => $baseDir . '/includes/Classes/SupportSVG.php',
+    'GSlider\\Interfaces\\Registrable' => $baseDir . '/includes/Interfaces/Registrable.php',
+    'GSlider\\Plugin' => $baseDir . '/includes/Plugin.php',
+    'GSlider\\RestApi\\BlockParser' => $baseDir . '/includes/RestApi/BlockParser.php',
+    'GSlider\\RestApi\\BlocksController' => $baseDir . '/includes/RestApi/BlocksController.php',
+    'GSlider\\Traits\\SingletonTrait' => $baseDir . '/includes/Traits/SingletonTrait.php',
+    'GSlider\\Utils\\CssSanitizer' => $baseDir . '/includes/Utils/CssSanitizer.php',
+    'GSlider\\Utils\\Utils' => $baseDir . '/includes/Utils/Utils.php',
 );

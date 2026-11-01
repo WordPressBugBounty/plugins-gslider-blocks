@@ -29,7 +29,27 @@ class ComposerStaticInit1515cd7e8136c5df6671f4636329d50f
     );
 
     public static $classMap = array (
+        'Appsero\\Client' => __DIR__ . '/..' . '/appsero/client/src/Client.php',
+        'Appsero\\Insights' => __DIR__ . '/..' . '/appsero/client/src/Insights.php',
+        'Appsero\\License' => __DIR__ . '/..' . '/appsero/client/src/License.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'GSlider\\Admin\\Dashboard' => __DIR__ . '/../..' . '/includes/Admin/Dashboard.php',
+        'GSlider\\Admin\\DashboardController' => __DIR__ . '/../..' . '/includes/Admin/DashboardController.php',
+        'GSlider\\Assets\\AdminAssets' => __DIR__ . '/../..' . '/includes/Assets/AdminAssets.php',
+        'GSlider\\Assets\\FrontendAssets' => __DIR__ . '/../..' . '/includes/Assets/FrontendAssets.php',
+        'GSlider\\Classes\\FontLoader' => __DIR__ . '/../..' . '/includes/Classes/FontLoader.php',
+        'GSlider\\Classes\\RegistrationBlocks' => __DIR__ . '/../..' . '/includes/Classes/RegistrationBlocks.php',
+        'GSlider\\Classes\\RegistrationCategory' => __DIR__ . '/../..' . '/includes/Classes/RegistrationCategory.php',
+        'GSlider\\Classes\\RegistrationPatterns' => __DIR__ . '/../..' . '/includes/Classes/RegistrationPatterns.php',
+        'GSlider\\Classes\\StyleGenerator' => __DIR__ . '/../..' . '/includes/Classes/StyleGenerator.php',
+        'GSlider\\Classes\\SupportSVG' => __DIR__ . '/../..' . '/includes/Classes/SupportSVG.php',
+        'GSlider\\Interfaces\\Registrable' => __DIR__ . '/../..' . '/includes/Interfaces/Registrable.php',
+        'GSlider\\Plugin' => __DIR__ . '/../..' . '/includes/Plugin.php',
+        'GSlider\\RestApi\\BlockParser' => __DIR__ . '/../..' . '/includes/RestApi/BlockParser.php',
+        'GSlider\\RestApi\\BlocksController' => __DIR__ . '/../..' . '/includes/RestApi/BlocksController.php',
+        'GSlider\\Traits\\SingletonTrait' => __DIR__ . '/../..' . '/includes/Traits/SingletonTrait.php',
+        'GSlider\\Utils\\CssSanitizer' => __DIR__ . '/../..' . '/includes/Utils/CssSanitizer.php',
+        'GSlider\\Utils\\Utils' => __DIR__ . '/../..' . '/includes/Utils/Utils.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
